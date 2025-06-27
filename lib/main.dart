@@ -11,28 +11,23 @@ void main() {
 class WeatherApp extends StatelessWidget {
   const WeatherApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetWeatherCubit(),
-      child: Builder(
-        builder:
-            (context) => BlocBuilder<GetWeatherCubit, WeatherState>(
-              builder: (context, state) {
-                return MaterialApp(
-                  theme: ThemeData(
-                    primarySwatch: getThemeColor(
-                      BlocProvider.of<GetWeatherCubit>(
-                        context,
-                      ).weatherModel?.weatherCondition,
-                    ),
-                  ),
-                  debugShowCheckedModeBanner: false,
-                  home: HomeView(),
-                );
-              },
-            ),
+      child: BlocBuilder<GetWeatherCubit, WeatherState>(
+        builder: (context, state) {
+          String? condition;
+          if (state is WeatherDataLoaded) {
+            condition = state.weatherModel.weatherCondition;
+          }
+
+          return MaterialApp(
+            theme: ThemeData(primarySwatch: getThemeColor(condition)),
+            debugShowCheckedModeBanner: false,
+            home: HomeView(),
+          );
+        },
       ),
     );
   }
@@ -42,7 +37,7 @@ MaterialColor getThemeColor(String? weatherCondition) {
   if (weatherCondition == null) {
     return Colors.blue;
   }
-  switch (weatherCondition) {
+  switch (weatherCondition.toLowerCase()) {
     case 'sunny':
       return Colors.orange;
     case 'partly cloudy':
