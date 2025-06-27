@@ -73,8 +73,14 @@ class _HomeViewState extends State<HomeView> {
                   Expanded(
                     child: BlocBuilder<GetWeatherCubit, WeatherState>(
                       builder: (context, state) {
-                        if (state is WeatherDataLoading) {
-                          return Center(child: CircularProgressIndicator());
+                        if (state is WeatherInitialState) {
+                          return Center(child: NoWeatherBody());
+                        } else if (state is WeatherDataLoading) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          );
                         } else if (state is WeatherDataLoadedSuccess) {
                           return WeatherInfoBody();
                         } else {

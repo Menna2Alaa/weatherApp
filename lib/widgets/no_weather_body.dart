@@ -5,12 +5,17 @@ class NoWeatherBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('There is no weather 😔', style: TextStyle(fontSize: 25)),
-        Text('start searching 🔍', style: TextStyle(fontSize: 25)),
-      ],
+    return Container(
+      color: Colors.white,
+      width: double.infinity,
+      height: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('There is no weather 😔', style: TextStyle(fontSize: 25)),
+          Text('start searching 🔍', style: TextStyle(fontSize: 25)),
+        ],
+      ),
     );
   }
 }
