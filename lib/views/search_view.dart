@@ -12,7 +12,7 @@ class SearchView extends StatelessWidget {
     return BlocBuilder<GetWeatherCubit, WeatherState>(
       builder: (context, state) {
         String? weatherCondition;
-        if (state is WeatherDataLoaded) {
+        if (state is WeatherDataLoadedSuccess) {
           weatherCondition = state.weatherModel.weatherCondition;
         }
 

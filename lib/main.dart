@@ -18,7 +18,7 @@ class WeatherApp extends StatelessWidget {
       child: BlocBuilder<GetWeatherCubit, WeatherState>(
         builder: (context, state) {
           String? condition;
-          if (state is WeatherDataLoaded) {
+          if (state is WeatherDataLoadedSuccess) {
             condition = state.weatherModel.weatherCondition;
           }
 

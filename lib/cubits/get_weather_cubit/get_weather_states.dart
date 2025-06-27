@@ -2,12 +2,12 @@ import 'package:weather_app/models/weather_model.dart';
 
 class WeatherState {}
 
-class WeatherInitialState extends WeatherState {}
+class WeatherDataLoading extends WeatherState {}
 
-class WeatherDataLoaded extends WeatherState {
+class WeatherDataLoadedSuccess extends WeatherState {
   final WeatherModel weatherModel;
 
-  WeatherDataLoaded(this.weatherModel);
+  WeatherDataLoadedSuccess(this.weatherModel);
 }
 
 class WeatherFailureState extends WeatherState {

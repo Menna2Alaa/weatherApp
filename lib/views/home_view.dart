@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
     return BlocBuilder<GetWeatherCubit, WeatherState>(
       builder: (context, state) {
         String? weatherCondition;
-        if (state is WeatherDataLoaded) {
+        if (state is WeatherDataLoadedSuccess) {
           weatherCondition = state.weatherModel.weatherCondition;
         }
 
@@ -73,9 +73,9 @@ class _HomeViewState extends State<HomeView> {
                   Expanded(
                     child: BlocBuilder<GetWeatherCubit, WeatherState>(
                       builder: (context, state) {
-                        if (state is WeatherInitialState) {
-                          return Center(child: NoWeatherBody());
-                        } else if (state is WeatherDataLoaded) {
+                        if (state is WeatherDataLoading) {
+                          return Center(child: CircularProgressIndicator());
+                        } else if (state is WeatherDataLoadedSuccess) {
                           return WeatherInfoBody();
                         } else {
                           return Center(
