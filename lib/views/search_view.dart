@@ -44,9 +44,9 @@ class SearchView extends StatelessWidget {
                     vertical: 32,
                     horizontal: 16,
                   ),
-                  // border: OutlineInputBorder(
-                  //   borderSide: BorderSide(color: Colors.orange),
-                  // ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.deepPurple),
+                  ),
                 ),
               ),
             ),
